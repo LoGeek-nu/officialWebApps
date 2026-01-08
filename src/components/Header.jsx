@@ -10,7 +10,14 @@ export default function Header() {
   return (
     <header className={`site-header ${open ? "menu-open" : ""}`}>
       <div className="site-logo">
-        <div className="site-logo-circle" />
+        <div className="site-logo">
+  <img
+    src="/log_log.png"
+    alt="LoGeek ロゴ"
+    className="site-logo-img"
+  />
+  <span className="site-title">LoGeek</span>
+</div>
         <div className="site-title">LoGeek公式サイト</div>
       </div>
 

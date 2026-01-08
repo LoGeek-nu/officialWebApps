@@ -12,10 +12,10 @@ export default function Hero() {
       const rect = el.getBoundingClientRect();
       const h = rect.height;
 
-      // 0〜1：Heroが上に抜けていくほど progress が増える
+
       const progress = Math.min(Math.max(-rect.top / h, 0), 1);
 
-      // CSS変数に反映
+ 
       el.style.setProperty("--p", progress.toString());
     };
 

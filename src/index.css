@@ -166,15 +166,15 @@ section h2 {
 .hero {
   position: relative;
   width: 100%;
-  height: 70vh; /* 画面の高さ70% */
+  height: 70vh; 
   overflow: hidden;
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 画像をいい感じにトリミング */
-  filter: brightness(70%); /* 少し暗くして文字を読みやすく */
+  object-fit: cover; 
+  filter: brightness(70%); 
 }
 
 .hero-text {
@@ -197,13 +197,18 @@ section h2 {
 
 
 
-/* スクロール進捗（0〜1）が入る。初期は0 */
 .hero { --p: 0; }
 
 .hero-text {
-  /* 上に動く（最大 -40px） */
+
   transform: translate(-50%, calc(-50% - (var(--p) * 40px)));
-  /* 消える（1に近づくほど透明） */
+
   opacity: calc(1 - var(--p));
-  transition: opacity 0.04s linear, transform 0.04s linear; /* 追従を滑らかに */
+  transition: opacity 0.04s linear, transform 0.04s linear; 
+}
+
+.site-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
