@@ -1,0 +1,44 @@
+.logo-image {
+  max-width: 280px;  
+  width: 60vw;        
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.start {
+  background: #fff;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9000;
+}
+
+.start-logo {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.6s ease; /* fadeIn(1600) */
+  z-index: 9999;
+}
+
+.start-logo.is-show {
+  opacity: 1;
+}
+
+.start.is-hide {
+  opacity: 0;
+  transition: opacity 0.5s ease; /* fadeOut(500) */
+  pointer-events: none;
+}
+
+.logo-text {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}

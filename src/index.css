@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #111827;
+  color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.site-logo-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 2px solid #f9fafb;
+  background: linear-gradient(135deg, #60a5fa, #ec4899);
+}
+
+.site-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: none;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.site-nav a {
+  color: #f9fafb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+.menu-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.25rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #f9fafb;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* メニュー開閉時のアニメーション */
+.menu-open .menu-toggle span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .menu-toggle span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu-open .site-nav {
+  display: block;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background: #111827;
+  padding: 0 1rem 0.75rem;
+  border-bottom: 1px solid #374151;
+}
+
+/* メイン部分 */
+main {
+  max-width: 960px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+
+section h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  border-left: 4px solid #111827;
+  padding-left: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: 0.75rem 2rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    position: static;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 0;
+  }
+}
+
+.map-container {
+  margin-top: 1rem;
+  width: 100%;
+  height: 300px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* 画面の高さ70% */
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像をいい感じにトリミング */
+  filter: brightness(70%); /* 少し暗くして文字を読みやすく */
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+}
+
+
+
+/* スクロール進捗（0〜1）が入る。初期は0 */
+.hero { --p: 0; }
+
+.hero-text {
+  /* 上に動く（最大 -40px） */
+  transform: translate(-50%, calc(-50% - (var(--p) * 40px)));
+  /* 消える（1に近づくほど透明） */
+  opacity: calc(1 - var(--p));
+  transition: opacity 0.04s linear, transform 0.04s linear; /* 追従を滑らかに */
+}
