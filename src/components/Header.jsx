@@ -20,8 +20,6 @@ export default function Header() {
 </div>
         <div className="site-title">LoGeek公式サイト</div>
       </div>
-
-      {/* モバイル用ハンバーガーボタン */}
       <button
         className="menu-toggle"
         aria-label="メニューを開閉"
@@ -32,8 +30,6 @@ export default function Header() {
         <span />
         <span />
       </button>
-
-      {/* ナビゲーション */}
       <nav className="site-nav">
         <ul>
           <li>
