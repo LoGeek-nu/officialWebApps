@@ -14,7 +14,8 @@
   "dependencies": {
     "@vis.gl/react-google-maps": "^1.7.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-twitter-widgets": "^1.11.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.21",
