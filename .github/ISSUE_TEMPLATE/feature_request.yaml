@@ -1,5 +1,6 @@
 name: Feature Request
 description: 新機能の提案や既存機能の改善案を記入
+type: task
 labels: enhancement
 
 body:
