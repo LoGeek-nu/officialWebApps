@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import Access from "./Access.jsx";
 
 /* ===== お知らせ ===== */
 function Notice() {
@@ -287,18 +288,7 @@ export default function MainContent() {
         </iframe>
       </section>
 
-      <section id="access">
-        <h2>アクセス</h2>
-        <div className="map-container">
-          日本大学文理学部8号館2階計算機室が主な活動場所です。
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=139.632225%2C35.66001%2C139.636225%2C35.66401&layer=mapnik&marker=35.66201%2C139.634225"
-            style={{ border: 0, width: "100%", height: "300px" }}
-            loading="lazy"
-            title="OpenStreetMap"
-          ></iframe>
-        </div>
-      </section>
+      <Access />
     </main>
   );
 }
