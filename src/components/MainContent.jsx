@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Access from "./Access.jsx";
+import Contact from "./Contact.jsx";
 
 /* ===== お知らせ ===== */
 function Notice() {
@@ -271,22 +272,7 @@ export default function MainContent() {
       <FAQ />
       <TwitterTimeline />
 
-      <section id="contact">
-        <h2>お問い合わせ</h2>
-        cookieを許可するとお問い合わせフォームが見えるようになります。<br />
-        参加希望・質問はSNSのDMまたはフォームからお気軽にどうぞ。
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSedBSDOTbhLqP6bC8a5q07XM9obSwJ26sY7CY3G9B4OoEXYvg/viewform?embedded=true"
-          width="640"
-          height="739"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="LoGeek contact form"
-        >
-          読み込んでいます…
-        </iframe>
-      </section>
+      <Contact />
 
       <Access />
     </main>

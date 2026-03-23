@@ -1,0 +1,35 @@
+export default function Contact() {
+  return (
+    <section id="contact">
+      <h2>お問い合わせ</h2>
+
+      <p>
+        入会希望やご質問などがございましたら、SNSのDMまたはフォームよりお気軽にご連絡ください。
+      </p>
+
+      <iframe
+        src="https://forms.gle/q9nyfppSv98wTyor5"
+        width="640"
+        height="739"
+        frameBorder="0"
+        marginHeight="0"
+        marginWidth="0"
+        title="LoGeek contact form"
+      >
+        読み込んでいます…
+      </iframe>
+      <p>
+        ※ブラウザの設定によってはフォームが表示されない場合があります。
+        その場合はCookieの設定をご確認いただくか、
+        <a
+          href="https://forms.gle/q9nyfppSv98wTyor5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          こちらから
+        </a>
+        ご回答ください。
+      </p>
+    </section>
+  );
+}
