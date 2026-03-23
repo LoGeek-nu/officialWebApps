@@ -4,7 +4,15 @@ export default function Contact() {
       <h2>お問い合わせ</h2>
 
       <p>
-        入会希望やご質問などがございましたら、SNSのDMまたはフォームよりお気軽にご連絡ください。
+        入会についてのご相談やご質問などは、
+        <a
+          href="https://x.com/nu_chs_logeek"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          公式XのDM
+        </a>
+        ）またはフォームよりお気軽にご連絡ください。
       </p>
 
       <iframe
