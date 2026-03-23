@@ -31,38 +31,6 @@ function Notice() {
   );
 }
 
-/* ===== 参加導線 ===== */
-function CTA() {
-  const btnStyle = {
-    padding: "10px 14px",
-    borderRadius: 12,
-    border: "1px solid #333",
-    textDecoration: "none",
-  };
-
-  return (
-    <section id="cta">
-      <h2>参加はこちら</h2>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        <a href="#contact" style={btnStyle}>
-          フォームで連絡
-        </a>
-        <a
-          href="https://twitter.com/nu_chs_logeek"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={btnStyle}
-        >
-          XのDMへ
-        </a>
-        <a href="#access" style={btnStyle}>
-          活動場所を見る
-        </a>
-      </div>
-    </section>
-  );
-}
-
 /* ===== FAQ（検索したときだけ表示） ===== */
 function FAQ() {
   const faqs = useMemo(
@@ -267,7 +235,6 @@ export default function MainContent() {
       </section>
 
       <Notice />
-      <CTA />
       <FAQ />
       <TwitterTimeline />
 
