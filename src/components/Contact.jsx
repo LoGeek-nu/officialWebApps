@@ -12,20 +12,30 @@ export default function Contact() {
         >
           公式XのDM
         </a>
-        ）またはフォームよりお気軽にご連絡ください。
+        またはフォームよりお気軽にご連絡ください。
       </p>
 
-      <iframe
-        src="https://forms.gle/q9nyfppSv98wTyor5"
-        width="640"
-        height="739"
-        frameBorder="0"
-        marginHeight="0"
-        marginWidth="0"
-        title="LoGeek contact form"
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "24px 0",
+        }}
       >
-        読み込んでいます…
-      </iframe>
+        <iframe
+          src="https://forms.gle/q9nyfppSv98wTyor5"
+          title="LoGeek contact form"
+          style={{
+            width: "100%",
+            maxWidth: "640px",
+            height: "60vh",
+            border: "none",
+          }}
+        >
+          読み込んでいます…
+        </iframe>
+      </div>
+
       <p>
         ※ブラウザの設定によってはフォームが表示されない場合があります。
         その場合はCookieの設定をご確認いただくか、
