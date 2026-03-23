@@ -212,3 +212,21 @@ section h2 {
   height: 32px;
   object-fit: contain;
 }
+
+.link-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.link-button:hover {
+  background-color: #f9fafb;
+  border-color: #111827;
+}
