@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Access from "./Access.jsx";
+import Activities from "./Activities.jsx";
 import Contact from "./Contact.jsx";
 
 /* ===== お知らせ ===== */
@@ -215,15 +216,7 @@ export default function MainContent() {
         </p>
       </section>
 
-      <section id="activities">
-        <h2>活動内容</h2>
-        <p>
-          毎週金曜日18:00~ AtCoder会<br />
-          学期ごとのLT会<br />
-          TechTrainを活用した勉強会<br />
-          もくもくと勉強する会<br />
-        </p>
-      </section>
+      <Activities />
 
       <section id="members">
         <h2>メンバー募集</h2>
