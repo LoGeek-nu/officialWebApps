@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Access from "./Access.jsx";
 import Members from "./Members.jsx";
+import Social from "./Social.jsx";
+import Activities from "./Activities.jsx";
+import Contact from "./Contact.jsx";
 
 /* ===== お知らせ ===== */
 function Notice() {
@@ -146,62 +149,6 @@ function FAQ() {
   );
 }
 
-/* ===== Twitterタイムライン（表示できない環境があるのでフォールバック付き） ===== */
-function TwitterTimeline() {
-  const ref = useRef(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    const SCRIPT_ID = "twitter-wjs";
-
-    const loadWidget = async () => {
-      try {
-        if (!document.getElementById(SCRIPT_ID)) {
-          const s = document.createElement("script");
-          s.id = SCRIPT_ID;
-          s.src = "https://platform.twitter.com/widgets.js";
-          s.async = true;
-          document.body.appendChild(s);
-
-          await new Promise((resolve, reject) => {
-            s.onload = resolve;
-            s.onerror = reject;
-          });
-        }
-
-        if (ref.current) ref.current.innerHTML = "";
-
-        await window.twttr.widgets.createTimeline(
-          { sourceType: "profile", screenName: "nu_chs_logeek" },
-          ref.current,
-          { height: 800 }
-        );
-
-        setFailed(false);
-      } catch (e) {
-        console.error("Twitter embed failed:", e);
-        setFailed(true);
-      }
-    };
-
-    loadWidget();
-  }, []);
-
-  return (
-    <section id="social">
-      <h2>最新情報</h2>
-      <div ref={ref} />
-      {failed && (
-        <div style={{ marginTop: 12 }}>
-          <a href="https://twitter.com/nu_chs_logeek" target="_blank" rel="noopener noreferrer">
-            最新ツイートを見る（Xへ移動）
-          </a>
-        </div>
-      )}
-    </section>
-  );
-}
-
 /* ===== メイン ===== */
 export default function MainContent() {
   return (
@@ -215,38 +162,15 @@ export default function MainContent() {
         </p>
       </section>
 
-      <section id="activities">
-        <h2>活動内容</h2>
-        <p>
-          毎週金曜日18:00~ AtCoder会<br />
-          学期ごとのLT会<br />
-          TechTrainを活用した勉強会<br />
-          もくもくと勉強する会<br />
-        </p>
-      </section>
+      <Activities />
 
       <Members />
 
       <Notice />
       <FAQ />
-      <TwitterTimeline />
+      <Social />
 
-      <section id="contact">
-        <h2>お問い合わせ</h2>
-        cookieを許可するとお問い合わせフォームが見えるようになります。<br />
-        参加希望・質問はSNSのDMまたはフォームからお気軽にどうぞ。
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSedBSDOTbhLqP6bC8a5q07XM9obSwJ26sY7CY3G9B4OoEXYvg/viewform?embedded=true"
-          width="640"
-          height="739"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="LoGeek contact form"
-        >
-          読み込んでいます…
-        </iframe>
-      </section>
+      <Contact />
 
       <Access />
     </main>
