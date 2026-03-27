@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Access from "./Access.jsx";
 import Activities from "./Activities.jsx";
+import Contact from "./Contact.jsx";
 
 /* ===== お知らせ ===== */
 function Notice() {
@@ -27,38 +28,6 @@ function Notice() {
             <div style={{ marginTop: 6 }}>{it.body}</div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-/* ===== 参加導線 ===== */
-function CTA() {
-  const btnStyle = {
-    padding: "10px 14px",
-    borderRadius: 12,
-    border: "1px solid #333",
-    textDecoration: "none",
-  };
-
-  return (
-    <section id="cta">
-      <h2>参加はこちら</h2>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        <a href="#contact" style={btnStyle}>
-          フォームで連絡
-        </a>
-        <a
-          href="https://twitter.com/nu_chs_logeek"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={btnStyle}
-        >
-          XのDMへ
-        </a>
-        <a href="#access" style={btnStyle}>
-          活動場所を見る
-        </a>
       </div>
     </section>
   );
@@ -260,26 +229,10 @@ export default function MainContent() {
       </section>
 
       <Notice />
-      <CTA />
       <FAQ />
       <TwitterTimeline />
 
-      <section id="contact">
-        <h2>お問い合わせ</h2>
-        cookieを許可するとお問い合わせフォームが見えるようになります。<br />
-        参加希望・質問はSNSのDMまたはフォームからお気軽にどうぞ。
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSedBSDOTbhLqP6bC8a5q07XM9obSwJ26sY7CY3G9B4OoEXYvg/viewform?embedded=true"
-          width="640"
-          height="739"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="LoGeek contact form"
-        >
-          読み込んでいます…
-        </iframe>
-      </section>
+      <Contact />
 
       <Access />
     </main>
