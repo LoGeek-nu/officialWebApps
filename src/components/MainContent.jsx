@@ -161,17 +161,12 @@ export default function MainContent() {
           2023年に設立しました。<br />
         </p>
       </section>
-
       <Activities />
-
       <Members />
-
       <Notice />
       <FAQ />
       <Social />
-
       <Contact />
-
       <Access />
     </main>
   );
