@@ -154,7 +154,7 @@ export default function MainContent() {
   return (
     <main>
       <section id="about">
-        <h2>概要</h2>
+        <h2>サークル紹介</h2>
         <p>
           日本大学文理学部の情報研究会 LoGeek です。<br />
           学年や学科に縛られず、情報技術を深めることを目的に活動しています。<br />
