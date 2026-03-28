@@ -102,7 +102,7 @@ function FAQ() {
       {/* 入力がない時は一覧を出さない */}
       {!trimmed ? (
         <p style={{ marginTop: 0, opacity: 0.75 }}>
-          キーワードを入力すると、該当するQ&amp;Aだけ表示されます。
+          キーワードを入力すると、該当するQ&amp;Aが表示されます。
         </p>
       ) : filtered.length > 0 ? (
         <div style={{ display: "grid", gap: 10 }}>
@@ -123,9 +123,12 @@ function FAQ() {
       ) : (
         <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 12 }}>
           <p style={{ marginTop: 0 }}>
-            「{query}」に一致するQ&amp;Aは見つかりませんでした（まだ掲載していない質問かも）。
+            「{query}」を含むQ&amp;Aは見つかりませんでした。
           </p>
 
+          <p style={{ marginBottom: 10, marginTop: 10, fontSize: 14, opacity: 0.75 }}>
+            情報が見つかりませんか？ 公式X または Googleフォームからお気軽にお問い合わせください！
+          </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <a href="#contact" style={btnStyle}>
               フォームで質問する
@@ -139,10 +142,6 @@ function FAQ() {
               XのDMで質問する
             </a>
           </div>
-
-          <p style={{ marginBottom: 0, marginTop: 10, fontSize: 12, opacity: 0.75 }}>
-            ※「見学」「活動日」「持ち物」「PC」なども気軽に聞いてOKです。
-          </p>
         </div>
       )}
     </section>
@@ -156,7 +155,7 @@ export default function MainContent() {
       <section id="about">
         <h2>サークル紹介</h2>
         <p>
-          日本大学文理学部の情報研究会 LoGeek です。<br />
+          日本大学文理学部情報研究会 LoGeek です。<br />
           学年や学科に縛られず、情報技術を深めることを目的に活動しています。<br />
           2023年に設立しました。<br />
         </p>
