@@ -136,27 +136,6 @@ section h2 {
   padding-left: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .site-header {
-    padding: 0.75rem 2rem;
-  }
-
-  .menu-toggle {
-    display: none;
-  }
-
-  .site-nav {
-    display: block;
-    position: static;
-  }
-
-  .site-nav ul {
-    flex-direction: row;
-    gap: 1.5rem;
-    padding: 0;
-  }
-}
-
 .map-container {
   margin-top: 1rem;
   width: 100%;
@@ -238,4 +217,25 @@ section h2 {
 .link-button:hover {
   background-color: #f9fafb;
   border-color: #111827;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: 0.75rem 2rem;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    position: static;
+  }
+
+  .site-nav ul {
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 0;
+  }
 }
