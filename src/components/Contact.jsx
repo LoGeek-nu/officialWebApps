@@ -12,7 +12,15 @@ export default function Contact() {
         >
           公式XのDM
         </a>
-        またはフォームよりお気軽にご連絡ください。
+        または
+        <a
+          href="https://forms.gle/q9nyfppSv98wTyor5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          お問い合わせフォーム
+        </a>
+        よりお気軽にご連絡ください。
       </p>
 
       <div
