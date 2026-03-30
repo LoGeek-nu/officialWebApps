@@ -5,7 +5,11 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   line-height: 1.6;
   background: #f5f5f5;
   color: #222;
@@ -81,7 +85,9 @@ body {
   width: 24px;
   height: 2px;
   background: #f9fafb;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 /* メニュー開閉時のアニメーション */
@@ -166,15 +172,15 @@ section h2 {
 .hero {
   position: relative;
   width: 100%;
-  height: 70vh; 
+  height: 70vh;
   overflow: hidden;
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  filter: brightness(70%); 
+  object-fit: cover;
+  filter: brightness(50%);
 }
 
 .hero-text {
@@ -195,20 +201,41 @@ section h2 {
   font-size: 1.5rem;
 }
 
-
-
-.hero { --p: 0; }
+.hero {
+  --p: 0;
+}
 
 .hero-text {
-
   transform: translate(-50%, calc(-50% - (var(--p) * 40px)));
 
   opacity: calc(1 - var(--p));
-  transition: opacity 0.04s linear, transform 0.04s linear; 
+  transition:
+    opacity 0.04s linear,
+    transform 0.04s linear;
 }
 
 .site-logo-img {
   width: 32px;
   height: 32px;
   object-fit: contain;
+}
+
+.link-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #374151;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.link-button:hover {
+  background-color: #f9fafb;
+  border-color: #111827;
 }

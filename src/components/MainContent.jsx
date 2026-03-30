@@ -1,4 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import Access from "./Access.jsx";
+import Members from "./Members.jsx";
+import Social from "./Social.jsx";
+import Activities from "./Activities.jsx";
+import Contact from "./Contact.jsx";
 
 /* ===== お知らせ ===== */
 function Notice() {
@@ -25,38 +30,6 @@ function Notice() {
             <div style={{ marginTop: 6 }}>{it.body}</div>
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-/* ===== 参加導線 ===== */
-function CTA() {
-  const btnStyle = {
-    padding: "10px 14px",
-    borderRadius: 12,
-    border: "1px solid #333",
-    textDecoration: "none",
-  };
-
-  return (
-    <section id="cta">
-      <h2>参加はこちら</h2>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        <a href="#contact" style={btnStyle}>
-          フォームで連絡
-        </a>
-        <a
-          href="https://twitter.com/nu_chs_logeek"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={btnStyle}
-        >
-          XのDMへ
-        </a>
-        <a href="#access" style={btnStyle}>
-          活動場所を見る
-        </a>
       </div>
     </section>
   );
@@ -129,7 +102,7 @@ function FAQ() {
       {/* 入力がない時は一覧を出さない */}
       {!trimmed ? (
         <p style={{ marginTop: 0, opacity: 0.75 }}>
-          キーワードを入力すると、該当するQ&amp;Aだけ表示されます。
+          キーワードを入力すると、該当するQ&amp;Aが表示されます。
         </p>
       ) : filtered.length > 0 ? (
         <div style={{ display: "grid", gap: 10 }}>
@@ -150,9 +123,12 @@ function FAQ() {
       ) : (
         <div style={{ padding: 12, border: "1px solid #ddd", borderRadius: 12 }}>
           <p style={{ marginTop: 0 }}>
-            「{query}」に一致するQ&amp;Aは見つかりませんでした（まだ掲載していない質問かも）。
+            「{query}」を含むQ&amp;Aは見つかりませんでした。
           </p>
 
+          <p style={{ marginBottom: 10, marginTop: 10, fontSize: 14, opacity: 0.75 }}>
+            情報が見つかりませんか？ 公式X または Googleフォームからお気軽にお問い合わせください！
+          </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <a href="#contact" style={btnStyle}>
               フォームで質問する
@@ -166,66 +142,6 @@ function FAQ() {
               XのDMで質問する
             </a>
           </div>
-
-          <p style={{ marginBottom: 0, marginTop: 10, fontSize: 12, opacity: 0.75 }}>
-            ※「見学」「活動日」「持ち物」「PC」なども気軽に聞いてOKです。
-          </p>
-        </div>
-      )}
-    </section>
-  );
-}
-
-/* ===== Twitterタイムライン（表示できない環境があるのでフォールバック付き） ===== */
-function TwitterTimeline() {
-  const ref = useRef(null);
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    const SCRIPT_ID = "twitter-wjs";
-
-    const loadWidget = async () => {
-      try {
-        if (!document.getElementById(SCRIPT_ID)) {
-          const s = document.createElement("script");
-          s.id = SCRIPT_ID;
-          s.src = "https://platform.twitter.com/widgets.js";
-          s.async = true;
-          document.body.appendChild(s);
-
-          await new Promise((resolve, reject) => {
-            s.onload = resolve;
-            s.onerror = reject;
-          });
-        }
-
-        if (ref.current) ref.current.innerHTML = "";
-
-        await window.twttr.widgets.createTimeline(
-          { sourceType: "profile", screenName: "nu_chs_logeek" },
-          ref.current,
-          { height: 800 }
-        );
-
-        setFailed(false);
-      } catch (e) {
-        console.error("Twitter embed failed:", e);
-        setFailed(true);
-      }
-    };
-
-    loadWidget();
-  }, []);
-
-  return (
-    <section id="social">
-      <h2>最新情報</h2>
-      <div ref={ref} />
-      {failed && (
-        <div style={{ marginTop: 12 }}>
-          <a href="https://twitter.com/nu_chs_logeek" target="_blank" rel="noopener noreferrer">
-            最新ツイートを見る（Xへ移動）
-          </a>
         </div>
       )}
     </section>
@@ -237,68 +153,20 @@ export default function MainContent() {
   return (
     <main>
       <section id="about">
-        <h2>概要</h2>
+        <h2>サークル紹介</h2>
         <p>
-          日本大学文理学部の情報研究会 LoGeek です。<br />
+          日本大学文理学部情報研究会 LoGeek です。<br />
           学年や学科に縛られず、情報技術を深めることを目的に活動しています。<br />
           2023年に設立しました。<br />
         </p>
       </section>
-
-      <section id="activities">
-        <h2>活動内容</h2>
-        <p>
-          毎週金曜日18:00~ AtCoder会<br />
-          学期ごとのLT会<br />
-          TechTrainを活用した勉強会<br />
-          もくもくと勉強する会<br />
-        </p>
-      </section>
-
-      <section id="members">
-        <h2>メンバー募集</h2>
-        <p>
-          学年学科関係なく常時新規メンバー募集中！<br />
-          年会費は無料！<br />
-          「やってみたい」という興味があれば、経験は問いません。<br />
-          初心者から経験者まで、誰でも歓迎しています。<br />
-        </p>
-      </section>
-
+      <Activities />
+      <Members />
       <Notice />
-      <CTA />
       <FAQ />
-      <TwitterTimeline />
-
-      <section id="contact">
-        <h2>お問い合わせ</h2>
-        cookieを許可するとお問い合わせフォームが見えるようになります。<br />
-        参加希望・質問はSNSのDMまたはフォームからお気軽にどうぞ。
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSedBSDOTbhLqP6bC8a5q07XM9obSwJ26sY7CY3G9B4OoEXYvg/viewform?embedded=true"
-          width="640"
-          height="739"
-          frameBorder="0"
-          marginHeight="0"
-          marginWidth="0"
-          title="LoGeek contact form"
-        >
-          読み込んでいます…
-        </iframe>
-      </section>
-
-      <section id="access">
-        <h2>アクセス</h2>
-        <div className="map-container">
-          日本大学文理学部8号館2階計算機室が主な活動場所です。
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=139.632225%2C35.66001%2C139.636225%2C35.66401&layer=mapnik&marker=35.66201%2C139.634225"
-            style={{ border: 0, width: "100%", height: "300px" }}
-            loading="lazy"
-            title="OpenStreetMap"
-          ></iframe>
-        </div>
-      </section>
+      <Social />
+      <Contact />
+      <Access />
     </main>
   );
 }
