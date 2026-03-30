@@ -13,7 +13,7 @@ export default function Access() {
       <img
         src="/LocalMap.png"
         alt={"学科計算機室への案内図：日本大学文理学部 8号館 2階"}
-        style={{ width: 480, objectFit: "cover" }}
+        class="map-image"
       />
 
       <p>
