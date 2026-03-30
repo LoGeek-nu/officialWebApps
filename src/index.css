@@ -224,6 +224,10 @@ section h2 {
   border-color: #111827;
 }
 
+.br-sp {
+  display: inline;
+}
+
 @media (min-width: 768px) {
   .hero {
     position: relative;
@@ -254,5 +258,9 @@ section h2 {
   .map-image {
     width: 60%;
     object-fit: cover;
+  }
+  
+  .br-sp {
+    display: none;
   }
 }
