@@ -7,10 +7,14 @@ export default function Access() {
       <h2>アクセス</h2>
 
       <p>
-        主な活動場所は
-        <br />
-        日本大学文理学部 8号館2階 計算機室です。
+        日本大学文理学部 8号館 2階 学科計算機室を中心に活動しています。
       </p>
+      
+      <img
+        src="/LocalMap.png"
+        alt={"学科計算機室への案内図：日本大学文理学部 8号館 2階"}
+        class="map-image"
+      />
 
       <p>
         <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
@@ -19,7 +23,7 @@ export default function Access() {
       </p>
 
       <p className="access-note">
-        ※開催場所が変更になる場合があります。参加前に最新のお知らせをご確認ください。
+        ※ 開催場所が変更されることがあるため、見学に来られる方は事前にお問い合わせください！
       </p>
     </section>
   );
