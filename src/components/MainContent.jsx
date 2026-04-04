@@ -49,7 +49,7 @@ export default function MainContent() {
       </section>
       <Activities />
       <Members />
-      <Notice />
+      {/* <Notice /> */}
       <FAQ />
       <Social />
       <Contact />
