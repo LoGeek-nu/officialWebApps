@@ -9,11 +9,11 @@ export default function Access() {
       <p>
         日本大学文理学部 8号館 2階 学科計算機室を中心に活動しています。
       </p>
-      
+
       <img
         src="/LocalMap.png"
         alt={"学科計算機室への案内図：日本大学文理学部 8号館 2階"}
-        class="map-image"
+        className="map-image"
       />
 
       <p>

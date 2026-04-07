@@ -31,8 +31,9 @@ export default function Contact() {
         }}
       >
         <iframe
-          src="https://forms.gle/q9nyfppSv98wTyor5"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSf-bRZSX93ikIqg1JXve3tSS7z5iLpfutlrURecrSuKQ1PEKg/viewform?embedded=true"
           title="LoGeek contact form"
+          loading="lazy"
           style={{
             width: "100%",
             maxWidth: "640px",
