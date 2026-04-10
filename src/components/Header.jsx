@@ -18,7 +18,6 @@ export default function Header() {
   />
   <span className="site-title">LoGeek</span>
 </div>
-        <div className="site-title">LoGeek公式サイト</div>
       </div>
       <button
         className="menu-toggle"

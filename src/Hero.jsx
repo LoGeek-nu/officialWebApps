@@ -29,7 +29,7 @@ export default function Hero() {
       <img src="/top.jpg" alt="メインイメージ" className="hero-image" />
       <div className="hero-text">
         <h1 className="hero-title">LoGeek</h1>
-        <p>情報技術を、ともに深める。</p>
+        <p>情報技術を、<br className="br-sp" />ともに深める</p>
       </div>
     </div>
   );

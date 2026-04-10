@@ -1,0 +1,10 @@
+# デプロイしたいディレクトリの設定
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA用の設定
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
