@@ -1,4 +1,13 @@
+import { useState } from "react";
+import Thanks from "./Thanks";
+
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return <Thanks onBack={() => setSubmitted(false)} />;
+  }
+
   return (
     <section id="contact">
       <h2>お問い合わせ</h2>
@@ -12,15 +21,7 @@ export default function Contact() {
         >
           公式XのDM
         </a>
-        または
-        <a
-          href="https://forms.gle/q9nyfppSv98wTyor5"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          お問い合わせフォーム
-        </a>
-        よりお気軽にご連絡ください。
+        または以下のお問い合わせフォームよりお気軽にご連絡ください。
       </p>
 
       <div
@@ -29,34 +30,74 @@ export default function Contact() {
           justifyContent: "center",
           margin: "24px 0",
         }}
-      >
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSf-bRZSX93ikIqg1JXve3tSS7z5iLpfutlrURecrSuKQ1PEKg/viewform?embedded=true"
-          title="LoGeek contact form"
-          loading="lazy"
-          style={{
-            width: "100%",
-            maxWidth: "640px",
-            height: "60vh",
-            border: "none",
-          }}
-        >
-          読み込んでいます…
-        </iframe>
-      </div>
+      ></div>
 
-      <p>
-        ※ブラウザの設定によってはフォームが表示されない場合があります。
-        その場合はCookieの設定をご確認いただくか、
-        <a
-          href="https://forms.gle/q9nyfppSv98wTyor5"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          こちらから
-        </a>
-        ご回答ください。
-      </p>
+      <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+
+      <form
+        action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf-bRZSX93ikIqg1JXve3tSS7z5iLpfutlrURecrSuKQ1PEKg/formResponse"
+        method="POST"
+        target="hidden_iframe"
+        onSubmit={() => setTimeout(() => setSubmitted(true), 500)}
+        className="c-form"
+      >
+        <div className="c-form__item">
+          <label className="c-form__label" htmlFor="field-name">
+            お名前<span className="c-form__required">必須</span>
+          </label>
+          <input
+            name="entry.335491494"
+            className="c-form__input"
+            id="field-name"
+            placeholder="計算機 花子"
+            type="text"
+            required
+          />
+        </div>
+        <div className="c-form__item">
+          <label className="c-form__label" htmlFor="field-affiliation">
+            所属
+            <span className="c-form__required">必須</span>
+          </label>
+          <input
+            name="entry.791759906"
+            className="c-form__input"
+            id="field-affiliation"
+            placeholder="日本大学文理学部情報科学科"
+            type="text"
+            required
+          />
+        </div>
+        <div className="c-form__item">
+          <label className="c-form__label" htmlFor="field-email">
+            連絡の取れるメールアドレス
+            <span className="c-form__required">必須</span>
+          </label>
+          <input
+            name="entry.417623452"
+            className="c-form__input"
+            id="field-email"
+            placeholder="sample@gmail.com"
+            type="email"
+            required
+          />
+        </div>
+        <div className="c-form__item">
+          <label className="c-form__label" htmlFor="field-message">
+            お問い合わせ内容<span className="c-form__required">必須</span>
+          </label>
+          <textarea
+            name="entry.424051204"
+            className="c-form__input"
+            id="field-message"
+            placeholder="お問い合わせ内容"
+            required
+          ></textarea>
+        </div>
+        <div className="c-form__submit">
+          <button type="submit">送信する</button>
+        </div>
+      </form>
     </section>
   );
 }
