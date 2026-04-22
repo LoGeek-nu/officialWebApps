@@ -1,7 +1,7 @@
 const activities = [
   {
     title: "AtCoder会",
-    summary: "毎週 18:00〜｜8号館2階 計算機室",
+    summary: "毎週水曜日 18:00〜｜8号館2階 計算機室",
     detail:
       "競技プログラミングサイト「AtCoder」の問題を各自で解き、わからないところを教え合う会です。途中参加・途中退室もOKです！",
     images: ["/Atcoder_1.jpg", "/Atcoder_2.jpg"],
