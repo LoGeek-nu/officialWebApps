@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+const navItems = [
+  { href: "#about", label: "サークル紹介" },
+  { href: "#activities", label: "活動内容" },
+  { href: "#members", label: "メンバー募集" },
+  { href: "#contact", label: "お問い合わせ" },
+  { href: "#access", label: "アクセス" },
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -7,45 +15,38 @@ export default function Header() {
     setOpen((prev) => !prev);
   };
 
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
   return (
     <header className={`site-header ${open ? "menu-open" : ""}`}>
-      <div className="site-logo">
-        <div className="site-logo">
-  <img
-    src="/log_log.png"
-    alt="LoGeek ロゴ"
-    className="site-logo-img"
-  />
-  <span className="site-title">LoGeek</span>
-</div>
-      </div>
+      <a href="#" className="site-logo" onClick={closeMenu}>
+        <img src="/log_log.png" alt="LoGeek ロゴ" className="site-logo-img" />
+        <span className="site-title">LoGeek</span>
+      </a>
+      <nav className="site-nav" id="site-nav">
+        <ul>
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} onClick={closeMenu}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <button
         className="menu-toggle"
         aria-label="メニューを開閉"
         aria-expanded={open}
+        aria-controls="site-nav"
         onClick={toggleMenu}
       >
         <span />
         <span />
         <span />
       </button>
-      <nav className="site-nav">
-        <ul>
-          <li>
-            <a href="#about">サークル紹介</a>
-          </li>
-          <li>
-            <a href="#activities">活動内容</a>
-          </li>
-          <li>
-            <a href="#members">メンバー募集</a>
-          </li>
-          <li>
-            <a href="#contact">お問い合わせ</a>
-          </li>
-            <a href="#access">アクセス</a>
-        </ul>
-      </nav>
     </header>
   );
 }
