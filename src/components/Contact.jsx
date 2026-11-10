@@ -1,12 +1,45 @@
-import { useState } from "react";
-import Thanks from "./Thanks";
+import { useEffect, useRef, useState } from "react";
+
+// 送信完了（iframe の読み込み）を待つ上限
+const SUBMIT_TIMEOUT_MS = 10000;
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  // idle: 未送信 / sending: 送信中 / success: 送信完了 / error: 送信失敗
+  const [status, setStatus] = useState("idle");
+  const formRef = useRef(null);
+  const noticeRef = useRef(null);
+  const timeoutRef = useRef(null);
 
-  if (submitted) {
-    return <Thanks onBack={() => setSubmitted(false)} />;
-  }
+  useEffect(() => () => clearTimeout(timeoutRef.current), []);
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      noticeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
+
+  const handleSubmit = (e) => {
+    // 別ドメインの応答は中身を読めず成否を判定できないため、オフラインは送信前に止める
+    if (!navigator.onLine) {
+      e.preventDefault();
+      setStatus("error");
+      return;
+    }
+    // preventDefault せず、hidden_iframe に向けてそのまま送信させる
+    setStatus("sending");
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setStatus("error"), SUBMIT_TIMEOUT_MS);
+  };
+
+  // Google Forms からの応答が iframe に読み込まれたら送信完了とみなす
+  const handleIframeLoad = () => {
+    if (status !== "sending") return;
+    clearTimeout(timeoutRef.current);
+    formRef.current?.reset();
+    setStatus("success");
+  };
+
+  const isSending = status === "sending";
 
   return (
     <section id="contact">
@@ -24,21 +57,38 @@ export default function Contact() {
         または以下のお問い合わせフォームよりお気軽にご連絡ください。
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "24px 0",
-        }}
-      ></div>
+      <iframe
+        name="hidden_iframe"
+        title="お問い合わせ送信用"
+        style={{ display: "none" }}
+        onLoad={handleIframeLoad}
+      ></iframe>
 
-      <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+      {(status === "success" || status === "error") && (
+        <div
+          ref={noticeRef}
+          className={`c-form__notice c-form__notice--${status}`}
+          role="status"
+        >
+          {status === "success" ? (
+            <>
+              <p>お問い合わせを送信しました。ありがとうございます。</p>
+              <p>内容を確認の上、担当者よりご連絡いたします。</p>
+            </>
+          ) : (
+            <p>
+              送信を確認できませんでした。時間をおいて再度お試しいただくか、公式XのDMからご連絡ください。
+            </p>
+          )}
+        </div>
+      )}
 
       <form
+        ref={formRef}
         action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf-bRZSX93ikIqg1JXve3tSS7z5iLpfutlrURecrSuKQ1PEKg/formResponse"
         method="POST"
         target="hidden_iframe"
-        onSubmit={() => setTimeout(() => setSubmitted(true), 500)}
+        onSubmit={handleSubmit}
         className="c-form"
       >
         <div className="c-form__item">
@@ -95,7 +145,9 @@ export default function Contact() {
           ></textarea>
         </div>
         <div className="c-form__submit">
-          <button type="submit">送信する</button>
+          <button type="submit" disabled={isSending}>
+            {isSending ? "送信中…" : "送信する"}
+          </button>
         </div>
       </form>
     </section>

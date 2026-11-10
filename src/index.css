@@ -344,20 +344,34 @@ textarea.c-form__input {
   color: #111827;
 }
 
-.c-form__submit-back {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #111827;
-  background: transparent;
-  border: 1.5px solid #111827;
-  border-radius: 6px;
-  padding: 0.5rem 1.75rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+.c-form__submit button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.c-form__submit-back:hover {
+.c-form__submit button:disabled:hover {
   background-color: #111827;
   color: #fff;
+}
+
+.c-form__notice {
+  max-width: 560px;
+  margin: 1.5rem auto 0;
+  padding: 1rem 1.25rem;
+  border: 1.5px solid;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.c-form__notice--success {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #6ee7b7;
+}
+
+.c-form__notice--error {
+  color: #991b1b;
+  background: #fef2f2;
+  border-color: #fca5a5;
 }
