@@ -233,6 +233,40 @@ section h2 {
     border-color 0.2s ease;
 }
 
+.link-button--x {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.x-logo {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+}
+
+.site-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.site-header-x {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  color: #f9fafb;
+}
+
+.site-header-x .x-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.site-header-x:hover {
+  opacity: 0.75;
+}
+
 .link-button:hover {
   background-color: #f9fafb;
   border-color: #111827;

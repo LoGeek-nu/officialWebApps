@@ -1,3 +1,5 @@
+import XLogo from "./XLogo.jsx";
+
 export default function Social() {
   return (
     <section id="social">
@@ -9,13 +11,14 @@ export default function Social() {
 
       <div>
         <a
-          href="https://twitter.com/nu_chs_logeek"
+          href="https://x.com/nu_chs_logeek"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LoGeek公式Xアカウントを開く"
-          className="link-button"
+          className="link-button link-button--x"
         >
-          公式X (@nu_chs_logeek) を見る
+          <XLogo />
+          公式Xを見る
         </a>
       </div>
     </section>
