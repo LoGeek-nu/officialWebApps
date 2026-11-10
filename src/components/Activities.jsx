@@ -1,7 +1,7 @@
 const activities = [
   {
     title: "AtCoder会",
-    summary: "毎週 18:00〜｜8号館2階 計算機室",
+    summary: "毎週水曜日 18:00〜｜8号館2階 計算機室",
     detail:
       "競技プログラミングサイト「AtCoder」の問題を各自で解き、わからないところを教え合う会です。途中参加・途中退室もOKです！",
     images: ["/Atcoder_1.jpg", "/Atcoder_2.jpg"],
@@ -49,12 +49,19 @@ export default function Activities() {
               borderRadius: 12,
             }}
           >
-            <div style={{ fontWeight: 700 }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "baseline",
+                columnGap: 10,
+                fontWeight: 700,
+              }}
+            >
               {act.title}
               <span
                 style={{
                   fontWeight: 400,
-                  marginLeft: 10,
                   opacity: 0.65,
                   fontSize: 13,
                 }}
@@ -77,7 +84,13 @@ export default function Activities() {
                     key={j}
                     src={src}
                     alt={`${act.title} 画像${j + 1}`}
-                    style={{ width: 240, objectFit: "cover" }}
+                    style={{
+                      width: 240,
+                      maxWidth: "100%",
+                      aspectRatio: "4 / 3",
+                      objectFit: "cover",
+                      borderRadius: 8,
+                    }}
                   />
                 ))}
               </div>
